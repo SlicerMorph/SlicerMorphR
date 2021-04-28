@@ -1,0 +1,16 @@
+Package: SlicerMorphR
+Title: Import SlicerMorph data into R
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Chi",
+           family = "Zhang",
+           role = c("aut", "cre"),
+           email = "chz31@pitt.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package import data processed by the GPA module of SlicerMorph into R.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
