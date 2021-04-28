@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Chi",
            family = "Zhang",
            role = c("aut", "cre"),
-           email = "chz31@pitt.edu",
+           email = "slicermorph@outlook.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: This package import data processed by the GPA module of SlicerMorph into R.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
