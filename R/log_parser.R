@@ -5,9 +5,28 @@
 #' including the output files as well as raw coordinates, in a large R object.
 #' These output files are shown in the analysis.log file.
 #' For details: please see https://github.com/SlicerMorph/Tutorials/blob/main/GPA_3/README.md
-#' @param  file an object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"
-#' @return A list that contains every output of the GPA module.
-#' @examples 
+#' @param  file An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"
+#' @return A list that contains every output of the GPA module.The output contains:
+#' \itemize {
+#'   \item $input.path = Unix style path to input folder with landmark files
+#'   \item $output.path = Unix stype path to the output folder created by GPA
+#'   \item $files = files included in the analysis
+#'   \item $format = format of landmark files ("fcsv" or "mrk.json")
+#'   \item $no.LM = number of landmarks original
+#'   \item $skipped = If any landmark is omitted in GPA (TRUE/FALSE)
+#'   \item $skippedLM = Indices of skipped LMs (created only if $skipped=TRUE)
+#'   \item $scale = are data scaled by centroid sizes (TRUE/FALSE)
+#'   \item $MeanShape = filename that contains mean shape coordinates calculated by GPA (csv format)
+#'   \item $eigenvalues = filename that contains eigenvalues as calculated by PCA in the SlicerMorph GPA (csv format)
+#'   \item $eigenvectors = filename that contains eigenvectors as calculated by PCA in the SlicerMorph GPA (csv format)
+#'   \item $OutputData = filename that contains procrustes distances, centroid sizes and procrustes aligned coordinates as calculated by the SlicerMorph GPA (csv format)
+#'   \item $$pcScores = filename that contains individal PC scores of specimens as calculated by PCA in the SlicerMorph GPA (csv format)
+#'   \item $ID = list of specimen identifiers (obtained from file names)
+#'   \item $LM = 3D landmark array that contains the 3D raw coordinates as inputed to the SlicerMorph GPA module
+#'   \item $semi = If any landmarks are tagged as semi-landmarks (TRUE/FALSE)
+#'   \item $semiLM = indices of LMs tagged as semi-landmarks (created only if $semi==TRUE)
+#' }
+#' @examples
 #' SM.log.file <- file.choose()
 #' SM.log <- parser(SM.log.file)
 #' head(SM.log)
