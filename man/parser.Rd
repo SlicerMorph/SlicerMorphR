@@ -10,7 +10,8 @@ parser(file = NULL)
 \item{file}{An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"}
 }
 \value{
-A list that contains every output of the GPA module.The output contains:
+A list that contains every output of the GPA module.\cr
+The output contains:
 \itemize {
 \item $input.path = Unix style path to input folder with landmark files
 \item $output.path = Unix stype path to the output folder created by GPA

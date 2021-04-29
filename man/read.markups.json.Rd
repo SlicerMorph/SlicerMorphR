@@ -10,9 +10,17 @@ read.markups.json(file = NULL)
 \item{file}{the file path that leads to a particular JSON file.}
 }
 \value{
-an array that contains the landmark coordinates. The dimensions are specified by dimnames x, y, and z.
+an array/matrix that contains the landmark coordinates. \cr
+Row numbers = number of landmarks;  \cr
+Column numbers = dimensions of the landmark coordinates  \cr
+Row names are assigned from the labels in the FCSV file  \cr
+Column names are assigned as "x", "y", and "z", depending on the dimension  \cr
 }
 \description{
 This function imports a JSON file into R. It utilizes function "fromJSON" from the package
 "jsonlite" to read a JSON file.
+}
+\examples{
+lms = read.markups.json(file = url("https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.json"))
+#Return a 41x3 matrix; rownames = labels in the FCSV file; colnames = "x", "y", "z"
 }

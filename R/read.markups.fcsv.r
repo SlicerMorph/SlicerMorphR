@@ -7,11 +7,12 @@
 #' Row numbers = number of landmarks;  \cr
 #' Column numbers = dimensions of the landmark coordinates  \cr
 #' Row names are assigned from the labels in the FCSV file  \cr
-#' Column names are assigned as "x", "y", and "z", depending on the dimensionality  \cr
+#' Column names are assigned as "x", "y", and "z", depending on the dimension  \cr
 #' @examples
 #' lms = read.markups.fcsv(file = url("https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"))
 #' #Return a 41x3 matrix; rownames = labels in the FCSV file; colnames = "x", "y", "z"
 #' @export
+
 read.markups.fcsv = function (file=NULL) {
   temp = read.csv(file=file, skip = 2, header = T)
   LM = array (data=as.matrix( temp[,2:4]),

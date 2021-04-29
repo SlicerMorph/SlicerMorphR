@@ -2,42 +2,51 @@
 #'
 #' This function export landmark coordinates into an FCSV file
 #' a fcsv file,
-#' @param pts a matrix that contains landmark coordinates; nrow = number of coordinates; ncol = dimensions
-#' @param outfile this parameter specifies a file to be created
-#' @return a FCSV file of morphometric data
+#' @param pts a matrix/array that contains landmark coordinates \cr
+#' nrow = number of coordinates \cr
+#' ncol = dimensions \cr
+#' Row names are assigned from the labels in the FCSV file  \cr
+#' Column names are assigned as "x", "y", and "z", depending on the dimension  \cr
+#' @param outfile this parameter specifies a file to be created (e.g., a directory leads to a particular file name)
+#' @return a FCSV file of morphometric data\cr
+#' The label for each landmark is the rowname of the input landmark matrix
+#' @examples
+#' lms = read.markups.fcsv(file = url("https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"))
+#' write.markups.fcsv(pts=lms, outfile = "Your_Directory/test.fcsv")
 #' @export
+
 write.markups.fcsv = function(pts=NULL, outfile=NULL){
-  
+
   temp = "# Markups fiducial file version = 4.13\n# CoordinateSystem = LPS\n# columns = id,x,y,z,ow,ox,oy,oz,vis,sel,lock,label,desc,associatedNodeID\n"
-  
+
   if (length(rownames(pts))==0) {
-    for (i in 1:nrow(pts)) 
+    for (i in 1:nrow(pts))
       temp = paste0(temp, '\n',
-                    paste(paste0("vtkMRMLMarkupsFiducialNode_", i-1), 
+                    paste(paste0("vtkMRMLMarkupsFiducialNode_", i-1),
                           pts[i,1],
-                          pts[i,2], 
+                          pts[i,2],
                           pts[i,3],
-                          paste(rep(0,3), collapse=','), 
-                          paste(rep(1,4), collapse=','), 
+                          paste(rep(0,3), collapse=','),
+                          paste(rep(1,4), collapse=','),
                           paste0("F-", i),
-                          paste(rep("",2), collapse=','), 
+                          paste(rep("",2), collapse=','),
                           sep=','))
-    
+
     cat (temp, file = outfile)
   } else {
     labels=rownames(pts)
-    for (i in 1:nrow(pts)) 
+    for (i in 1:nrow(pts))
       temp = paste0(temp, '\n',
-                    paste(paste0("vtkMRMLMarkupsFiducialNode_", i-1), 
+                    paste(paste0("vtkMRMLMarkupsFiducialNode_", i-1),
                           pts[i,1],
-                          pts[i,2], 
+                          pts[i,2],
                           pts[i,3],
-                          paste(rep(0,3), collapse=','), 
-                          paste(rep(1,4), collapse=','), 
+                          paste(rep(0,3), collapse=','),
+                          paste(rep(1,4), collapse=','),
                           paste(labels[i]),
-                          paste(rep("",2), collapse=','), 
+                          paste(rep("",2), collapse=','),
                           sep=','))
-    
+
     cat (temp, file = outfile)
   }
 }

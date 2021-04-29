@@ -7,14 +7,23 @@
 write.markups.fcsv(pts = NULL, outfile = NULL)
 }
 \arguments{
-\item{pts}{a matrix that contains landmark coordinates; nrow = number of coordinates; ncol = dimensions}
+\item{pts}{a matrix/array that contains landmark coordinates \cr
+nrow = number of coordinates \cr
+ncol = dimensions \cr
+Row names are assigned from the labels in the FCSV file  \cr
+Column names are assigned as "x", "y", and "z", depending on the dimension  \cr}
 
-\item{outfile}{this parameter specifies a file to be created}
+\item{outfile}{this parameter specifies a file to be created (e.g., a directory leads to a particular file name)}
 }
 \value{
-a FCSV file of morphometric data
+a FCSV file of morphometric data\cr
+The label for each landmark is the rowname of the input landmark matrix
 }
 \description{
 This function export landmark coordinates into an FCSV file
 a fcsv file,
+}
+\examples{
+lms = read.markups.fcsv(file = url("https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"))
+write.markups.fcsv(pts=lms, outfile = "Your_Directory/test.fcsv")
 }

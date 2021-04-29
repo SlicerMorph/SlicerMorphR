@@ -14,7 +14,7 @@ An array/matrix that contains the landmark coordinates. \cr
 Row numbers = number of landmarks;  \cr
 Column numbers = dimensions of the landmark coordinates  \cr
 Row names are assigned from the labels in the FCSV file  \cr
-Column names are assigned as "x", "y", and "z", depending on the dimensionality  \cr
+Column names are assigned as "x", "y", and "z", depending on the dimension  \cr
 }
 \description{
 This function imports an FCSV file into R. It utilizes the 'read.csv' function to read
