@@ -7,10 +7,10 @@
 read.markups.json(file = NULL)
 }
 \arguments{
-\item{file}{the file path that leads to a particular JSON file.}
+\item{file}{The file path that leads to a particular JSON file.}
 }
 \value{
-an array/matrix that contains the landmark coordinates. \cr
+An array/matrix that contains the landmark coordinates. \cr
 Row numbers = number of landmarks;  \cr
 Column numbers = dimensions of the landmark coordinates  \cr
 Row names are assigned from the labels in the FCSV file  \cr

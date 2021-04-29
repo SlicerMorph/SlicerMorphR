@@ -7,7 +7,7 @@
 read.markups.fcsv(file = NULL)
 }
 \arguments{
-\item{File}{the file path that leads to a particular FCSV file.}
+\item{File}{The file path that leads to a particular FCSV file.}
 }
 \value{
 An array/matrix that contains the landmark coordinates. \cr

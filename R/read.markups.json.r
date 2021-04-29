@@ -2,8 +2,8 @@
 #'
 #' This function imports a JSON file into R. It utilizes function "fromJSON" from the package
 #' "jsonlite" to read a JSON file.
-#' @param file the file path that leads to a particular JSON file.
-#' @return an array/matrix that contains the landmark coordinates. \cr
+#' @param file The file path that leads to a particular JSON file.
+#' @return An array/matrix that contains the landmark coordinates. \cr
 #' Row numbers = number of landmarks;  \cr
 #' Column numbers = dimensions of the landmark coordinates  \cr
 #' Row names are assigned from the labels in the FCSV file  \cr

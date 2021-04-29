@@ -13,10 +13,10 @@ ncol = dimensions \cr
 Row names are assigned from the labels in the FCSV file  \cr
 Column names are assigned as "x", "y", and "z", depending on the dimension  \cr}
 
-\item{outfile}{this parameter specifies a file to be created (e.g., a directory leads to a particular file name)}
+\item{outfile}{this parameter specifies a file to be created (e.g., a directory leads to a particular FCSV file; see example)}
 }
 \value{
-a FCSV file of morphometric data\cr
+A FCSV file of morphometric data\cr
 The label for each landmark is the rowname of the input landmark matrix
 }
 \description{

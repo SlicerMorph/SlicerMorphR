@@ -2,7 +2,7 @@
 #'
 #' This function imports an FCSV file into R. It utilizes the 'read.csv' function to read
 #' a fcsv file,
-#' @param  File the file path that leads to a particular FCSV file.
+#' @param  File The file path that leads to a particular FCSV file.
 #' @returns An array/matrix that contains the landmark coordinates. \cr
 #' Row numbers = number of landmarks;  \cr
 #' Column numbers = dimensions of the landmark coordinates  \cr
