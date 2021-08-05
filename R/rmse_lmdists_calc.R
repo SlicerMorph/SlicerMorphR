@@ -12,7 +12,7 @@
 #'   \item $RMSE = the RMSE value between a specimen and a reference
 #' }
 #' @examples
-#' RMSE_results <- LMDists_RMSE_per_specimen(specimen1_matrix, mean_matrix)
+#' results <- LMDists_RMSE_per_specimen(specimen1_matrix, mean_matrix)
 #' @export
 
 LMDists_RMSE_per_specimen <- function(Matrix_test, Matrix_ref){
