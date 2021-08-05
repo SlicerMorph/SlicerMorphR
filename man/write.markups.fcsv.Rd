@@ -4,7 +4,7 @@
 \alias{write.markups.fcsv}
 \title{Export landmark data into FCSV file}
 \usage{
-write.markups.fcsv(pts = NULL, outfile = NULL)
+write.markups.fcsv(pts = NULL, outfile = NULL, coord = "LPS")
 }
 \arguments{
 \item{pts}{a matrix/array that contains landmark coordinates \cr
@@ -21,9 +21,10 @@ The label for each landmark is the rowname of the input landmark matrix
 }
 \description{
 This function export landmark coordinates into an FCSV file
+By default coordinates are assumed to be written in LPS, but can be change to RAS using the @param coord option.
 a fcsv file,
 }
 \examples{
 lms = read.markups.fcsv(file = url("https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"))
-write.markups.fcsv(pts=lms, outfile = "Your_Directory/test.fcsv")
+write.markups.fcsv(pts=lms, outfile = "Your_Directory/test.fcsv", coord="LPS")
 }

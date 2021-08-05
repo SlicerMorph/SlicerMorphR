@@ -12,10 +12,10 @@
 #'   \item $RMSE = the RMSE value between a specimen and a reference
 #' }
 #' @examples
-#' results <- RMSE_LMDists_per_specimen(specimen1_matrix, mean_matrix)
+#' results <- rmse_lmdists_per_specimen(specimen1_matrix, mean_matrix)
 #' @export
 
-RMSE_LMDists_per_specimen <- function(Matrix_test, Matrix_ref){
+rmse_lmdists_per_specimen <- function(Matrix_test, Matrix_ref){
   #Return the RMSE for each between a test landmark matrix/array and the landmark matrix/array serving as the standard
   #Return individual landmark Euclidean distances
   diff <- (Matrix_test - Matrix_ref)^2

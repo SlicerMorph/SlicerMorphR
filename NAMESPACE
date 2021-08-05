@@ -3,4 +3,5 @@
 export(parser)
 export(read.markups.fcsv)
 export(read.markups.json)
+export(rmse_lmdists_per_specimen)
 export(write.markups.fcsv)

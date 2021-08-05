@@ -12,7 +12,7 @@ parser(file = NULL)
 \value{
 A list that contains every output of the GPA module.\cr
 The output contains:
-\itemize{
+\itemize {
 \item $input.path = Unix style path to input folder with landmark files
 \item $output.path = Unix stype path to the output folder created by GPA
 \item $files = files included in the analysis
