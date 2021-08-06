@@ -15,8 +15,10 @@ rmse(M1, M2)
 A list that contains the RMSE of the specimen as well as pairwise landmark distances \cr
 between the specimen and the reference \cr
 The returned value contains: \cr
-$LM_distances = all pairwise landmark distances between a specimen and a reference \cr
-$RMSE = the RMSE value between a specimen and a reference \cr
+\itemize{
+\item $LM_distances = all pairwise landmark distances between a specimen and a reference
+\item $RMSE = the RMSE value between a specimen and a reference
+}
 }
 \description{
 This function calculates the root mean square (RMSE) and landmark distances for a specimen (a landmark matrix/array)

@@ -26,7 +26,7 @@
 #'   \item $LM = 3D landmark array that contains the 3D raw coordinates as inputed to the SlicerMorph GPA module
 #'   \item $semi = If any landmarks are tagged as semi-landmarks (TRUE/FALSE)
 #'   \item $semiLM = indices of LMs tagged as semi-landmarks (created only if $semi==TRUE)
-#' }
+#'}
 #'
 #' @examples
 #' SM.log.file <- file.choose()
