@@ -36,6 +36,6 @@ rmse <- function(M1, M2){
   sq_diff <- (M1 - M2)^2
   sq_LM_dist <- rowSums(sq_diff) #a vector storing squared distances between LM pairs
   RMSE <- sqrt(mean(sq_LM_dist))
-  result <- list("LM_distances" = LM_distances, "RMSE" = RMSE)
+  result <- list("LM_distances" = sqrt(sq_LM_dist), "RMSE" = RMSE)
   return(result)
 }
