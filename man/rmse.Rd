@@ -7,9 +7,9 @@
 rmse(M1, M2)
 }
 \arguments{
-\item{Matrix_test}{A matrix or 2d array storing landmark coordinates of a specimen}
+\item{M1}{A matrix or 2d array storing landmark coordinates of a specimen}
 
-\item{Matrix_ref}{A matrix or 2d array storing landmark coordinates of a reference specimen}
+\item{M2}{A matrix or 2d array storing landmark coordinates of a reference specimen}
 }
 \value{
 A list that contains the RMSE of the specimen as well as pairwise landmark distances \cr

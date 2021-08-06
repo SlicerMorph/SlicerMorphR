@@ -2,8 +2,8 @@
 #'
 #' This function calculates the root mean square (RMSE) and landmark distances for a specimen (a landmark matrix/array)
 #' to a reference specimen (e.g., a mean shape or a manually landmarked specimen)
-#' @param Matrix_test A matrix or 2d array storing landmark coordinates of a specimen
-#' @param Matrix_ref A matrix or 2d array storing landmark coordinates of a reference specimen
+#' @param M1 A matrix or 2d array storing landmark coordinates of a specimen
+#' @param M2 A matrix or 2d array storing landmark coordinates of a reference specimen
 #' @return A list that contains the RMSE of the specimen as well as pairwise landmark distances \cr
 #' between the specimen and the reference \cr
 #' The returned value contains: \cr
