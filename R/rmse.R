@@ -12,16 +12,30 @@
 #'   \item $RMSE = the RMSE value between a specimen and a reference
 #' }
 #' @examples
-#' results <- rmse_lmdists_per_specimen(specimen1_matrix, mean_matrix)
+#' create two 3D LM coordinates:
+#' x=NULL
+#' for (i in 1:5) x=rbind(x, c(0,0,i))
+#' x
+#' [,1] [,2] [,3]
+#' [1,]    0    0    1
+#' [2,]    0    0    2
+#' [3,]    0    0    3
+#' [4,]    0    0    4
+#' [5,]    0    0    5
+#' y=NULL
+#' for (i in 5:1) y=rbind(y, c(0,0,i))
+#' rmse(x,y)
+#' $LM_distances
+#' [1] 4 2 0 2 4
+#' $RMSE
+#' [1] 2.828427
 #' @export
 
-rmse_lmdists_per_specimen <- function(Matrix_test, Matrix_ref){
-  #Return the RMSE for each between a test landmark matrix/array and the landmark matrix/array serving as the standard
-  #Return individual landmark Euclidean distances
-  diff <- (Matrix_test - Matrix_ref)^2
-  LM_distances <- rowSums(diff) #a vector storing individual LM distance vs. the GS
-  LM_number <- dim(Matrix_test)[1]
-  RMSE <- sqrt(sum(LM_distances)/LM_number)
+rmse <- function(M1, M2){
+  #Returns the RMSE between two LM matrices as well as Euclidean distances between corresponding LM pairs
+  sq_diff <- (M1 - M2)^2
+  sq_LM_dist <- rowSums(sq_diff) #a vector storing squared distances between LM pairs
+  RMSE <- sqrt(mean(sq_LM_dist))
   result <- list("LM_distances" = LM_distances, "RMSE" = RMSE)
   return(result)
 }
