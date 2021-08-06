@@ -11,6 +11,7 @@
 #'   \item $LM_distances = all pairwise landmark distances between a specimen and a reference
 #'   \item $RMSE = the RMSE value between a specimen and a reference
 #' }
+#'
 #' @examples
 #' create two 3D LM coordinates:
 #' x=NULL

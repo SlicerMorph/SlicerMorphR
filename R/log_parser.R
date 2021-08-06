@@ -27,6 +27,7 @@
 #'   \item $semi = If any landmarks are tagged as semi-landmarks (TRUE/FALSE)
 #'   \item $semiLM = indices of LMs tagged as semi-landmarks (created only if $semi==TRUE)
 #' }
+#'
 #' @examples
 #' SM.log.file <- file.choose()
 #' SM.log <- parser(SM.log.file)
