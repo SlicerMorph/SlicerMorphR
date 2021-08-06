@@ -6,7 +6,7 @@
 #' @param Matrix_ref A matrix or 2d array storing landmark coordinates of a reference specimen
 #' @return A list that contains the RMSE of the specimen as well as pairwise landmark distances \cr
 #' between the specimen and the reference \cr
-#' The returned value contains:
+#' The returned value contains: \cr
 #' \itemize {
 #'   \item $LM_distances = all pairwise landmark distances between a specimen and a reference
 #'   \item $RMSE = the RMSE value between a specimen and a reference
