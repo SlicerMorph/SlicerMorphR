@@ -7,8 +7,8 @@
 #' For details: please see https://github.com/SlicerMorph/Tutorials/blob/main/GPA_3/README.md
 #' @param  file An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"
 #' @return A list that contains every output of the GPA module.\cr
-#' The output contains:
-#' \itemize {
+#' The output contains: \cr
+#' \itemize{
 #'   \item $input.path = Unix style path to input folder with landmark files
 #'   \item $output.path = Unix stype path to the output folder created by GPA
 #'   \item $files = files included in the analysis
@@ -26,7 +26,8 @@
 #'   \item $LM = 3D landmark array that contains the 3D raw coordinates as inputed to the SlicerMorph GPA module
 #'   \item $semi = If any landmarks are tagged as semi-landmarks (TRUE/FALSE)
 #'   \item $semiLM = indices of LMs tagged as semi-landmarks (created only if $semi==TRUE)
-#' }
+#'}
+#'
 #' @examples
 #' SM.log.file <- file.choose()
 #' SM.log <- parser(SM.log.file)
