@@ -22,7 +22,7 @@ In readLines(file) :
   incomplete final line found on 'C:\Users\murat\Desktop\2021-08-09_14_17_38\analysis.log'
 > SM.output
 $input.path
-[1] "C:/Users/murat/Box Sync/PI_Maga/grant_proposals/Nsf_Informatics/Publications/Semi_LM_paper/landmark sets/Gorilla/sphere"
+[1] "C:/Semi_LM_paper/landmark sets/Gorilla/sphere"
 
 $output.path
 [1] "C:/Users/murat/Desktop/2021-08-09_14_17_38"
