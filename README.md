@@ -8,6 +8,11 @@ install via devtools
 
 ## Usage
 
+* __read.markups.fcsv__ : Reads the 3D Slicer Markups file saved in fcsv format
+* __read.markups.json__:  Reads the 3D Slicer Markups file saved in json format (the default format)
+* __write.markups.fcsv__: Writes a matrix of 3D LM coordinates in 3D Slicer's Markups format as fcsv. By default LM coordinates coordinates are written as LPS (Left-Posterior-SUperior) coordinate system, which is default in Slicer.
+* __parser__ : Reads and parses the analysis.log file as output by the SlicerMorph's GPA module.  
+
 ```
 > library(SlicerMorphR)
 # point out to the analysis.log file created by the SlicerMorph's GPA function. 
