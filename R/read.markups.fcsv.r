@@ -23,7 +23,7 @@ read.markups.fcsv = function (file=NULL) {
               dimnames=list(temp$label, c("X", "Y", "Z")))
 
   x <- readLines(file, n = 2)
-  y <- strsplit(x,"=", split = " ", fixed = T)[[2]][2] #return coordinate system type, either "0" or "LPS"
+  y <- strsplit(x, split = " ", fixed = T)[[2]][4] #return coordinate system type, either "0" or "LPS"
   M_flip <- rbind(c(-1, 0, 0), c(0, -1, 0), c(0, 0, 1))
 
   if (y == "0"){
