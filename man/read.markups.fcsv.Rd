@@ -19,8 +19,10 @@ Column names are assigned as "x", "y", and "z", depending on the dimension  \cr
 \description{
 This function imports an FCSV file into R. It utilizes the 'read.csv' function to read
 a fcsv file,
+If the coordinate system = 0 (i.e., not LPS), the sign of the x and y coordinates will be flipped to be consistent with LPS coordinate system.
 }
 \examples{
 lms = read.markups.fcsv(file = url("https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"))
 #Return a 41x3 matrix; rownames = labels in the FCSV file; colnames = "x", "y", "z"
+#The x, and y coordinates in the original fcsv will be flipped to match the LPS coordiante system
 }

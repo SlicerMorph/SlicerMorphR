@@ -38,6 +38,7 @@ This function parse log output (analysis.log file) from the SlicerMorph's GPA
 including the output files as well as raw coordinates, in a large R object.
 These output files are shown in the analysis.log file.
 For details: please see https://github.com/SlicerMorph/Tutorials/blob/main/GPA_3/README.md
+Note: if the coordinate system of the fcsv files are not LPS (i.e., "0"), the signs of the x and y coordinates will be flipped
 }
 \examples{
 SM.log.file <- file.choose()

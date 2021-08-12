@@ -5,6 +5,7 @@
 #' including the output files as well as raw coordinates, in a large R object.
 #' These output files are shown in the analysis.log file.
 #' For details: please see https://github.com/SlicerMorph/Tutorials/blob/main/GPA_3/README.md
+#' Note: if the coordinate system of the fcsv files are not LPS (i.e., "0"), the signs of the x and y coordinates will be flipped
 #' @param  file An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"
 #' @return A list that contains every output of the GPA module.\cr
 #' The output contains: \cr
