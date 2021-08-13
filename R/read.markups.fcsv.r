@@ -57,11 +57,11 @@ read.markups.fcsv = function (file=NULL, forceLPS = FALSE) {
     #if the coordinate system = "LPS", do nothing
     x <- readLines(file, n = 2)
     y <- strsplit(x, split = " ", fixed = T)[[2]][4] #return coordinate system type, either "0" or "LPS"
-    if ( (y != "LPS") | (y != "1")) {
-      LM <- LM%*%M_flip
+    if ( (y == "LPS") | (y == "1")) {
+      LM <- LM
     }
     else {
-      LM <- LM
+      LM <- LM%*%M_flip
     }
   }
 
