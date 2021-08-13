@@ -26,7 +26,7 @@
 #' lms = read.markups.fcsv(file = file, forceLPS = TRUE)
 #' #Because forceLPS = TRUE, the function will read the "coordinateSystem" in the 2nd line of the fcsv to see if it is "LPS"
 #' x <- readLines(file, n = 2)
-#' x[2]
+#' x[[2]]
 #' [1] "# CoordinateSystem = 0"
 #' #The coordinateSystem is not "LPS", so the signs of x, y coordinates are reversed to be consistent with the LPS coordinate system.
 #' lms[1:3, ]
@@ -42,7 +42,6 @@ read.markups.fcsv = function (file=NULL, forceLPS = FALSE) {
   LM <- array (data=as.matrix( temp[,2:4]),
               dim =c(nrow(temp), 3),
               dimnames=list(temp$label, c("X", "Y", "Z")))
-  print(file)
 
   M_flip <- rbind(c(-1, 0, 0), c(0, -1, 0), c(0, 0, 1))
 

@@ -39,7 +39,7 @@ file = "https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_
 lms = read.markups.fcsv(file = file, forceLPS = TRUE)
 #Because forceLPS = TRUE, the function will read the "coordinateSystem" in the 2nd line of the fcsv to see if it is "LPS"
 x <- readLines(file, n = 2)
-x[2]
+x[[2]]
 [1] "# CoordinateSystem = 0"
 #The coordinateSystem is not "LPS", so the signs of x, y coordinates are reversed to be consistent with the LPS coordinate system.
 lms[1:3, ]
