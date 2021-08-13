@@ -1,8 +1,15 @@
 #' Import a FCSV file into R
 #'
-#' This function imports an FCSV file into R. It utilizes the 'read.csv' function to read
-#' a fcsv file,
-#' If the coordinate system = 0 (i.e., not LPS), the sign of the x and y coordinates will be flipped to be consistent with LPS coordinate system.
+#' This function imports an FCSV as written by 3D Slicer file into R.
+#'
+#' In the older version of 3D Slicer,
+#' markup coordinates were written in RAS (Right-Anterior-Superior) coordinate system assumption.
+#' More recently, it has been saved as LPS (Left-Posterior-Superior).\cr
+#'
+#' If forceLPS set to FALSE (default), the contents of the file will be read as as, ignoring the header information, where the coordinate system is stored.\cr
+#'
+#' If forceLPS is set to TRUE, the function will check for the coordinate system definition in the FCSV header,
+#' and will negate the x,y coordinate values if the coordinate system is defined as RAS. File will be read as is, if the coordinate system definition is LPS.
 #' @param  file The file path that leads to a particular FCSV file.
 #' @param  forceLPS The forceLPS determines if the coordinate system should be converted into LPS. The default is FALSE. If set to be TRUE, the function will read the "coordinateSystem" value at the second line of fcsv. If not "LPS", it will reverse the signs of x and y coordinates to force the coordinate system into LPS.
 #' @returns An array/matrix that contains the landmark coordinates. \cr
