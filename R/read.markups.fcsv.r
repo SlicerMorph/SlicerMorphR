@@ -21,7 +21,7 @@
 #' Gorilla_template_LM1-3 109.137 294.534  -97.4347
 #'
 #' lms = read.markups.fcsv(file = file, forceLPS = TRUE)
-#' Because forceLPS = TRUE, the function will read the "coordinateSystem" in the 2nd line of the fcsv to see if it is "LPS"
+#' #Because forceLPS = TRUE, the function will read the "coordinateSystem" in the 2nd line of the fcsv to see if it is "LPS"
 #' x <- readLines(file, n = 2)
 #' x[2]
 #' [1] "# CoordinateSystem = 0"
