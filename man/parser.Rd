@@ -4,10 +4,13 @@
 \alias{parser}
 \title{Parse the GPA log output}
 \usage{
-parser(file = NULL)
+parser(file = NULL, forceLPS = FALSE)
 }
 \arguments{
 \item{file}{An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"}
+
+\item{forceLPS}{The forceLPS determines if the landmark coordinates stored in .fcsv files should be converted into LPS format in case if they are not.
+For details of this parameter, please refer to the help file of read.markups.fcsv().}
 }
 \value{
 A list that contains every output of the GPA module.\cr
@@ -42,6 +45,6 @@ Note: if the coordinate system of the fcsv files are not LPS (i.e., "0"), the si
 }
 \examples{
 SM.log.file <- file.choose()
-SM.log <- parser(SM.log.file)
+SM.log <- parser(SM.log.file. forceFPS = TRUE)
 head(SM.log)
 }

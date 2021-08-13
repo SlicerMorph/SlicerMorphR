@@ -7,6 +7,8 @@
 #' For details: please see https://github.com/SlicerMorph/Tutorials/blob/main/GPA_3/README.md
 #' Note: if the coordinate system of the fcsv files are not LPS (i.e., "0"), the signs of the x and y coordinates will be flipped
 #' @param  file An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"
+#' @param  forceLPS The forceLPS determines if the landmark coordinates stored in .fcsv files should be converted into LPS format in case if they are not.
+#' For details of this parameter, please refer to the help file of read.markups.fcsv().
 #' @return A list that contains every output of the GPA module.\cr
 #' The output contains: \cr
 #' \itemize{
@@ -31,11 +33,11 @@
 #'
 #' @examples
 #' SM.log.file <- file.choose()
-#' SM.log <- parser(SM.log.file)
+#' SM.log <- parser(SM.log.file. forceFPS = TRUE)
 #' head(SM.log)
 #' @export
 
-parser = function(file=NULL){
+parser = function(file=NULL, forceLPS = FALSE){
   cut=function(x) return(strsplit(x,"=")[[1]][2])
   temp = unlist(lapply(X=readLines(file), FUN=cut))
   log = list()
@@ -73,12 +75,12 @@ parser = function(file=NULL){
   if (!log$skipped) {
     log$LM = array(dim =c (log$no.LM, 3, length(log$files)),
                    dimnames = list(1:log$no.LM, c("x", "y", "z"), log$ID))
-    if (log$format==".fcsv") for (i in 1:length(log$files)) log$LM[,,i] = read.markups.fcsv(paste(log$input.path,log$files[i],sep = "/")) else
+    if (log$format==".fcsv") for (i in 1:length(log$files)) log$LM[,,i] = read.markups.fcsv(paste(log$input.path,log$files[i],sep = "/"), forceLPS) else
       for (i in 1:length(log$files))  log$LM[,,i] = read.markups.json(paste(log$input.path,log$files[i],sep = "/"))
   } else {
     log$LM = array(dim = c(log$no.LM - length(log$skipped.LM), 3, length(log$files)),
                    dimnames = list((1:log$no.LM)[-as.numeric(log$skipped.LM)], c("x", "y", "z"), log$ID))
-    if (log$format==".fcsv") for (i in 1:length(log$files)) log$LM[,,i] = read.markups.fcsv(paste(log$input.path,log$files[i],sep = "/"))[-c(as.numeric(log$skipped.LM) ), ] else
+    if (log$format==".fcsv") for (i in 1:length(log$files)) log$LM[,,i] = read.markups.fcsv(paste(log$input.path,log$files[i],sep = "/"), forceLPS)[-c(as.numeric(log$skipped.LM) ), ] else
       for (i in 1:length(log$files)) log$LM[,,i] = read.markups.json(paste(log$input.path,log$files[i],sep = "/"))[-c(as.numeric(log$skipped.LM) ), ]
 
   }
