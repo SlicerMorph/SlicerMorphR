@@ -16,7 +16,8 @@ install via devtools
 ```
 > library(SlicerMorphR)
 # point out to the analysis.log file created by the SlicerMorph's GPA function. 
-> SM.output=parser(file.choose())
+> SM.output=parser(file.choose(), forceLPS = TRUE)
+#For details of the forceLPS parameter, please see the example of read.markup.fcsv() below and its associated help file
 Warning message:
 In readLines(file) :
   incomplete final line found on 'C:\Users\murat\Desktop\2021-08-09_14_17_38\analysis.log'
@@ -116,5 +117,31 @@ $LM
 13   118.44697 289.5207  -46.93095
 14   123.72807 289.7841  -46.25342
 15   129.60968 290.5058  -46.02137
+
+
+#forceLPS = FALSE
+>file = "https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"
+>lms = read.markups.fcsv(file = file, forceLPS = FALSE) #default setting for forceLPS
+#Return a 41x3 matrix that stores raw landmark coordinates from the fcsv files; rownames = labels in the FCSV file; colnames = "x", "y", "z"
+lms[1:3, ]
+                             X       Y         Z
+Gorilla_template_LM1-1 111.987 312.757 -148.0780
+Gorilla_template_LM1-2 114.785 381.650 -128.2390
+Gorilla_template_LM1-3 109.137 294.534  -97.4347
+
+#forceLPS = TRUE
+>file = "https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"
+>lms = read.markups.fcsv(file = file, forceLPS = TRUE)
+#Because forceLPS = TRUE, the function will read the "coordinateSystem" in the 2nd line of the fcsv to see if it is "LPS"
+>x <- readLines(file, n = 2)
+>x[[2]]
+[1] "# CoordinateSystem = 0"
+#The coordinateSystem is not "LPS", so the signs of x, y coordinates are reversed to be consistent with the LPS coordinate system.
+>lms[1:3, ]
+                           [,1]     [,2]      [,3]
+Gorilla_template_LM1-1 -111.987 -312.757 -148.0780
+Gorilla_template_LM1-2 -114.785 -381.650 -128.2390
+Gorilla_template_LM1-3 -109.137 -294.534  -97.4347
+
 ...
 ```

@@ -45,6 +45,6 @@ Note: if the coordinate system of the fcsv files are not LPS (i.e., "0"), the si
 }
 \examples{
 SM.log.file <- file.choose()
-SM.log <- parser(SM.log.file. forceFPS = TRUE)
+SM.log <- parser(SM.log.file. forceLPS = TRUE)
 head(SM.log)
 }
