@@ -119,6 +119,7 @@ $LM
 15   129.60968 290.5058  -46.02137
 
 
+#An example of using read.markups.fcsv() with the forceLPS parameter
 #forceLPS = FALSE
 > file = "https://raw.githubusercontent.com/SlicerMorph/SampleData/master/Gorilla_template_LM1.fcsv"
 > lms = read.markups.fcsv(file = file, forceLPS = FALSE) #default setting for forceLPS
