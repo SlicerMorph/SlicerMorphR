@@ -4,10 +4,13 @@
 \alias{parser}
 \title{Parse the GPA log output}
 \usage{
-parser(file = NULL)
+parser(file = NULL, forceLPS = FALSE)
 }
 \arguments{
 \item{file}{An object that points to the location of the analysis.log file, either by hard coding the path or interactively via the function "file.choose()"}
+
+\item{forceLPS}{The forceLPS determines if the landmark coordinates stored in .fcsv files should be converted into LPS format in case if they are not.
+For details of this parameter, please refer to the help file of read.markups.fcsv().}
 }
 \value{
 A list that contains every output of the GPA module.\cr
@@ -38,9 +41,10 @@ This function parse log output (analysis.log file) from the SlicerMorph's GPA
 including the output files as well as raw coordinates, in a large R object.
 These output files are shown in the analysis.log file.
 For details: please see https://github.com/SlicerMorph/Tutorials/blob/main/GPA_3/README.md
+Note: if the coordinate system of the fcsv files are not LPS (i.e., "0"), the signs of the x and y coordinates will be flipped
 }
 \examples{
 SM.log.file <- file.choose()
-SM.log <- parser(SM.log.file)
+SM.log <- parser(SM.log.file. forceFPS = TRUE)
 head(SM.log)
 }
