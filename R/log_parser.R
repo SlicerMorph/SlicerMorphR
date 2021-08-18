@@ -33,7 +33,8 @@
 #'
 #' @examples
 #' SM.log.file <- file.choose()
-#' SM.log <- parser(SM.log.file. forceFPS = TRUE)
+#' SM.log <- parser(SM.log.file. forceLPS = TRUE)
+#' #for details of "forceLPS", please see the helpfile of read.markups.fcsv()
 #' head(SM.log)
 #' @export
 
