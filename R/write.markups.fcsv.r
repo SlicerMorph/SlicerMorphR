@@ -38,7 +38,7 @@ write.markups.fcsv = function (pts = NULL, outfile = NULL, coord="LPS") {
         cat(temp, file = outfile)
       }
   } else if (toupper(coord) == "RAS") {  
-    temp = "# Markups fiducial file version = 4.13\n# CoordinateSystem = RAS\n# columns = id,x,y,z,ow,ox,oy,oz,vis,sel,lock,label,desc,associatedNodeID\n"
+    temp = "# Markups fiducial file version = 4.13\n# CoordinateSystem = RAS\n# columns = id,x,y,z,ow,ox,oy,oz,vis,sel,lock,label,desc,associatedNodeID"
     if (length(rownames(pts)) == 0) {
       for (i in 1:nrow(pts)) temp = paste0(temp, "\n", paste(paste0("vtkMRMLMarkupsFiducialNode_", 
                                                                     i - 1), pts[i, 1], pts[i, 2], pts[i, 3], paste(rep(0, 
