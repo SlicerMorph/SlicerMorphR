@@ -45,10 +45,10 @@
 #' @export
 
 read.markups.fcsv = function (file=NULL, forceLPS = FALSE) {
-  temp <- read.csv(file, skip = 2, header = T)
+  temp <- read.csv(file, skip = 3, header = F)
   LM <- array (data=as.matrix( temp[,2:4]),
               dim =c(nrow(temp), 3),
-              dimnames=list(temp$label, c("X", "Y", "Z")))
+              dimnames=list(temp[, 12], c("X", "Y", "Z")))
 
   M_flip <- rbind(c(-1, 0, 0), c(0, -1, 0), c(0, 0, 1))
 
