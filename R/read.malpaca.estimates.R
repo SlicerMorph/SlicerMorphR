@@ -101,8 +101,8 @@ read.malpaca.estimates <- function(MALPACA_outputDir, templates_Dir){
   medianFiles <- list.files(medians_dir)
   
   #Fetch file type
-  words <- strsplit(file, split = ".", fixed = TRUE)
-  dataType <- temp[[1]][length(words[[1]])]
+  words <- strsplit(medianFiles[1], split = ".", fixed = TRUE)
+  dataType <- words[[1]][length(words[[1]])]
   
   target_names <- NULL
   for (file in medianFiles){
@@ -113,7 +113,7 @@ read.malpaca.estimates <- function(MALPACA_outputDir, templates_Dir){
     name <- paste(name, collapse = "_")
     target_names <- append(target_names, name)
   }
-
+  
   template_files <- list.files(templates_Dir)
   template_number <- length(template_files)
   template_fileName <- vector()
@@ -121,7 +121,7 @@ read.malpaca.estimates <- function(MALPACA_outputDir, templates_Dir){
     name <- strsplit(file, split = ".", fixed = TRUE)
     template_fileName <- append(template_fileName, name[[1]][1])
   }
-
+  
   #Fetch sample size and landmark numbers
   if (dataType == 'fcsv'){
     temp <- read.markups.fcsv(file = paste(medians_dir, medianFiles[1], sep = "/"), forceLPS = TRUE)
@@ -132,7 +132,7 @@ read.malpaca.estimates <- function(MALPACA_outputDir, templates_Dir){
   }
   LM_number <- dim(temp)[1]
   sample_size <- length(medianFiles)
-
+  
   #Read MALPACA median estimates and cooresponding manual landmark files for the targets
   MALPACA_medians <- array(dim = c(LM_number, 3, sample_size))
   for (i in 1: sample_size){
@@ -147,35 +147,36 @@ read.malpaca.estimates <- function(MALPACA_outputDir, templates_Dir){
   dimnames(MALPACA_medians)[[1]] <- c(1:LM_number)
   dimnames(MALPACA_medians)[[2]] <- c("x", "y", "z")
   dimnames(MALPACA_medians)[[3]] <- target_names
-
-
+  
+  
   #Read individual Estimates
   allEstimates_dir <- paste(MALPACA_outputDir, "individualEstimates", sep = "/")
   files_all <- list.files(allEstimates_dir)
   allEstimates <- array(dim = c(LM_number, 3, template_number, sample_size))
   file_counter = 1
-
+  
   for (i in 1:sample_size){
     for (j in 1:template_number){
       if (dataType == 'fcsv'){
         allEstimates[, , j, i] <- read.markups.fcsv(file = paste(allEstimates_dir, files_all[file_counter], sep = "/"), forceLPS = TRUE)
       } else if (dataType == 'json'){
-        allEstimates[, , j, i] <- read.markups.json(file = paste(allEstimates_dir, files_all[file_counter], sep = "/"), forceLPS = TRUE)
+        allEstimates[, , j, i] <- read.markups.json(file = paste(allEstimates_dir, files_all[file_counter], sep = "/"))
       } else {
         print("The landmark files are neither mrk.json nor fcsv. Please check the proper data types")
-      file_counter = file_counter + 1
+        file_counter = file_counter + 1
+      }
     }
   }
-
+  
   dimnames(allEstimates)[[1]] <- c(1:LM_number)
   dimnames(allEstimates)[[2]] <- c("x", "y", "z")
   dimnames(allEstimates)[[3]] <- template_fileName
   dimnames(allEstimates)[[4]] <- target_names
-
+  
   results <- list()
   results$MALPACA_medians <- MALPACA_medians
   results$allEstimates <- allEstimates
-
+  
   return (results)
-
+  
 }
