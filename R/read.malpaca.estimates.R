@@ -163,8 +163,8 @@ read.malpaca.estimates <- function(MALPACA_outputDir, templates_Dir){
         allEstimates[, , j, i] <- read.markups.json(file = paste(allEstimates_dir, files_all[file_counter], sep = "/"))
       } else {
         print("The landmark files are neither mrk.json nor fcsv. Please check the proper data types")
-        file_counter = file_counter + 1
       }
+      file_counter = file_counter + 1
     }
   }
   
