@@ -72,18 +72,30 @@ parser = function(file=NULL, forceLPS = FALSE){
   log$pcScores=temp[14]
   log$ID=gsub(log$format, "", fixed=T, log$files )
 
-  if (!log$skipped) {
-    log$LM = array(dim =c (log$no.LM, 3, length(log$files)),
-                   dimnames = list(1:log$no.LM, c("x", "y", "z"), log$ID))
-    if (log$format==".fcsv") for (i in 1:length(log$files)) log$LM[,,i] = read.markups.fcsv(paste(log$input.path,log$files[i],sep = "/"), forceLPS) else
-      for (i in 1:length(log$files))  log$LM[,,i] = read.markups.json(paste(log$input.path,log$files[i],sep = "/"))
-  } else {
-    log$LM = array(dim = c(log$no.LM - length(log$skipped.LM), 3, length(log$files)),
-                   dimnames = list((1:log$no.LM)[-as.numeric(log$skipped.LM)], c("x", "y", "z"), log$ID))
-    if (log$format==".fcsv") for (i in 1:length(log$files)) log$LM[,,i] = read.markups.fcsv(paste(log$input.path,log$files[i],sep = "/"), forceLPS)[-c(as.numeric(log$skipped.LM) ), ] else
-      for (i in 1:length(log$files)) log$LM[,,i] = read.markups.json(paste(log$input.path,log$files[i],sep = "/"))[-c(as.numeric(log$skipped.LM) ), ]
+   if (all(file.exists(paste(log$input.path, log$files, sep = "/")))) {
+        if (!log$skipped) {
+          log$LM = array(dim = c(log$no.LM, 3, length(log$files)), 
+                         dimnames = list(1:log$no.LM, c("x", "y", "z"), log$ID))
+          if (log$format == ".fcsv") 
+            for (i in 1:length(log$files)) log$LM[, , i] = read.markups.fcsv(paste(log$input.path, 
+                                                                                   log$files[i], sep = "/"), forceLPS)
+          else for (i in 1:length(log$files)) log$LM[, , i] = read.markups.json(paste(log$input.path, 
+                                                                                      log$files[i], sep = "/"))
+        }
+        else {
+          log$LM = array(dim = c(log$no.LM - length(log$skipped.LM), 
+                                 3, length(log$files)), dimnames = list((1:log$no.LM)[-as.numeric(log$skipped.LM)], 
+                                                                        c("x", "y", "z"), log$ID))
+          if (log$format == ".fcsv") 
+            for (i in 1:length(log$files)) log$LM[, , i] = read.markups.fcsv(paste(log$input.path, 
+                                                                                   log$files[i], sep = "/"), forceLPS)[-c(as.numeric(log$skipped.LM)), 
+                                                                                   ]
+          else for (i in 1:length(log$files)) log$LM[, , i] = read.markups.json(paste(log$input.path, 
+                                                                                      log$files[i], sep = "/"))[-c(as.numeric(log$skipped.LM)), 
+                                                                                      ]
+        }
+  } else stop("not all original landmark files are found. Make sure you didn't modify their location after you executed GPA in SliceMorph. Can't continue.")    
 
-  }
 
   return(log)
 
