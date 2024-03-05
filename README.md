@@ -11,7 +11,8 @@ install via devtools
 * __read.markups.fcsv__ : Reads the 3D Slicer Markups file saved in fcsv format
 * __read.markups.json__:  Reads the 3D Slicer Markups file saved in json format (the default format)
 * __write.markups.fcsv__: Writes a matrix of 3D LM coordinates in 3D Slicer's Markups format as fcsv. By default LM coordinates are written with LPS (Left-Posterior-SUperior) coordinate system header, which is default in Slicer.
-* __parser__ : Reads and parses the analysis.log file as output by the SlicerMorph's GPA module.  
+* __parser__ : Reads and parses the analysis.log file as output by the SlicerMorph's GPA module.
+* __geomorph2slicermorph__ : Allow to save a geomorph GPA and PCA analysis in SlicerMorph's GPA output format, so that you can load the results into Slicer to visualize in 3D. 
 
 ```
 > library(SlicerMorphR)
@@ -143,6 +144,21 @@ Gorilla_template_LM1-3 109.137 294.534  -97.4347
 Gorilla_template_LM1-1 -111.987 -312.757 -148.0780
 Gorilla_template_LM1-2 -114.785 -381.650 -128.2390
 Gorilla_template_LM1-3 -109.137 -294.534  -97.4347
-
-...
 ```
+
+### How to convert a geomorph analysis into SlicerMorph's format
+
+Run this code in R, remember to modify the output.folder variable to a valid location in your computer. 
+
+```R
+library(geomorph)
+library(SlicerMorphR)
+data(scallops)
+Y.gpa <- gpagen(A = scallops$coorddata, curves = scallops$curvslide, 
+surfaces = scallops$surfslide)
+Y.pca <- gm.prcomp(A=Y.gpa$coords)
+geomorph2slicermorph(gpa=Y.gpa, pca=Y.pca, output.folder='/tmp/geomorph2slicermorph/')
+```
+
+then go to the **Load Previous Analysis** section of the SlicerMorph's GPA module, click the `...` button next to the **Results Directory** section and navigate to the folder you specified as output folder. Hit the `Load GPA + PCA Analysis from file` button to load the results into SlicerMorph.
+
