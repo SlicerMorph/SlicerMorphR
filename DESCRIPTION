@@ -2,8 +2,8 @@ Package: SlicerMorphR
 Title: Import SlicerMorph data into R
 Version: 0.0.2.0000
 Authors@R: c(
-    	person("Chi", "Zhang", role" = c("aut", "cre"), "chi.zhang@tamu.edu"),
-		person("Murat", "Maga", role" = c("aut", "cre"), "slicermorph@outlook.com")
+    	person("Chi", "Zhang", role = c("aut", "cre"), "chi.zhang@tamu.edu"),
+		person("Murat", "Maga", role = c("aut", "cre"), "slicermorph@outlook.com")
 		)
 Description: This package provides convenience functions to import output from SlicerMorph's GPA module, as well as functions to read 3D Slicer's markup formats (fscv and mrk.json). 
 License: `use_mit_license()`
