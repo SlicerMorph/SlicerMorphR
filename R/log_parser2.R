@@ -88,7 +88,7 @@ parser2 = function(file=NULL, forceLPS = FALSE, json = TRUE) {
     #including anything that might have encoded as missing.
     log$no.LM = js$GPALog$NumberLM
     
-    if (is.empty(js$GPALog$Excluded[[1]])) {
+    if (!is.empty(js$GPALog$Excluded[[1]])) {
       log$skipped = TRUE
       log$skipped.LM = js$GPALog$ExcludedLM[[1]]
     } else {
@@ -96,7 +96,7 @@ parser2 = function(file=NULL, forceLPS = FALSE, json = TRUE) {
       log$skipped.LM = NULL
     }
     
-    if (is.empty(js$GPALog$SemiLandmarks[[1]])) {
+    if (!is.empty(js$GPALog$SemiLandmarks[[1]])) {
       log$semi=TRUE
       log$semiLMs = js$GPALog$SemiLandmarks[[1]] 
       } else {
