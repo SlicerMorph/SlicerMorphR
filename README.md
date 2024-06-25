@@ -65,8 +65,7 @@ download.file(url="https://raw.githubusercontent.com/SlicerMorph/SampleData/mast
 
 #unzip the contents of the zip file into this folder. 
 
-#setwd(paste0(output.path, "Gorilla patch semi-landmarks/merged" ))
-setwd("/Users/amaga/Desktop/SlicerMorph_sample/Gorilla patch semi-landmarks/merged")
+setwd(paste0(output.path, "Gorilla patch semi-landmarks/merged" ))
 
 files=dir(patt='json')
 
@@ -81,7 +80,7 @@ dimnames(LMs) = list(paste0("LM_",1:921), c("x", "y", "z"), samples)
 
 gpa = gpagen(A=LMs, surfaces = semi.LMs, ProcD = TRUE)
 pca = gm.prcomp(gpa$coords)
-geomorph2slicermorph(gpa=gpa, pca=pca, paste0(output.path, "sliding'))
+geomorph2slicermorph2(gpa=gpa, pca=pca, paste0(output.path, "sliding'))
 
 ```
 
