@@ -32,5 +32,5 @@ write.markups.json = function (pts = NULL, outfile = NULL) {
     markups=markups
   )
   
-  cat(jsonlite::toJSON(data, auto_unbox=TRUE), file = outfile)
+  cat(jsonlite::toJSON(data, auto_unbox=TRUE, pretty=TRUE), file = outfile)
 }
