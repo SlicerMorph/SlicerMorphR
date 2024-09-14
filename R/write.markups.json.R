@@ -8,7 +8,7 @@ write.markups.json = function (pts = NULL, outfile = NULL)
   
   for (i in 1:noLM) points[[i]] = list(id = i, 
                                        label = labels[i], 
-                                       position = as.numeric(unlist(pts[i, ])), 
+                                       position = as.numeric(pts[i, ]), 
                                        orientation = c(-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0), 
                                        selected = TRUE, 
                                        locked = FALSE, 
@@ -39,6 +39,6 @@ write.markups.json = function (pts = NULL, outfile = NULL)
   markups = list(markup)
   data = list(`@schema` = "https://raw.githubusercontent.com/slicer/slicer/master/Modules/Loadable/Markups/Resources/Schema/markups-schema-v1.0.3.json#", 
               markups = markups)
-  cat(jsonlite::toJSON(data, auto_unbox = TRUE, pretty = TRUE, digits=NA), 
+  cat(jsonlite::toJSON(data, auto_unbox = TRUE, pretty = TRUE, digits=NA, always_decimal=TRUE), 
       file = outfile)
 }
