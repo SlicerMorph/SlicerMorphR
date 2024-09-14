@@ -1,36 +1,44 @@
-write.markups.json = function (pts = NULL, outfile = NULL) {
-  
+write.markups.json = function (pts = NULL, outfile = NULL) 
+{
   noLM = nrow(pts)
-  if (length(dimnames(pts)[[1]]) > 0) labels = dimnames(pts)[[1]] else labels = paste("F", 1:noLM, collapse="-")
-  
+  if (length(dimnames(pts)[[1]]) > 0) 
+    labels = dimnames(pts)[[1]]
+  else labels = paste("F", 1:noLM, collapse = "-")
   points = list()
   
-  for (i in 1:noLM) points[[i]] = list(id = i,
-                                       label = labels[i],
-                                       position = unlist(pts[i,]),
-                                       orientation = "[-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0]",
-                                       selected = TRUE,
-                                       locked =  FALSE,
-                                       visibility= TRUE,
+  for (i in 1:noLM) points[[i]] = list(id = i, 
+                                       label = labels[i], 
+                                       position = as.numeric(unlist(pts[i, ])), 
+                                       orientation = c(-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0), 
+                                       selected = TRUE, 
+                                       locked = FALSE, 
+                                       visibility = TRUE, 
                                        positionStatus = "defined")
-  markup = list(
-    type= "Fiducial",
-    coordinateSystem= "LPS",
-    coordinateUnits= "mm",
-    locked= TRUE,
-    fixedNumberOfControlPoints= TRUE,
-    #controlPoints = controlPoints
-    controlPoints = points
-  )
   
-  markups = list(
-    markup
-  )
+  display = list(visibility = TRUE,
+                 opacity = 1.0,
+                 color = c(0.4, 1.0, 1.0), 
+                 selectedColor = c(1.0, 0.5000076295109483, 0.5000076295109483), 
+                 activeColor = c(0.4, 1.0, 0.0),
+                 propertiesLabelVisibility = FALSE,
+                 pointLabelsVisibility = TRUE,
+                 textScale = 3.0,
+                 glyphType = "Sphere3D",
+                 glyphScale = 3.0,
+                 glyphSize = 5.0,
+                 useGlyphScale = TRUE)
   
-  data = list(
-    "@schema"="https://raw.githubusercontent.com/slicer/slicer/master/Modules/Loadable/Markups/Resources/Schema/markups-schema-v1.0.3.json#",
-    markups=markups
-  )
+  markup = list(type = "Fiducial", 
+                coordinateSystem = "LPS", 
+                coordinateUnits = "mm", 
+                locked = TRUE, 
+                fixedNumberOfControlPoints = TRUE, 
+                controlPoints = points,
+                display = display)
   
-  cat(jsonlite::toJSON(data, auto_unbox=TRUE, pretty=TRUE, digits=NA), file = outfile)
+  markups = list(markup)
+  data = list(`@schema` = "https://raw.githubusercontent.com/slicer/slicer/master/Modules/Loadable/Markups/Resources/Schema/markups-schema-v1.0.3.json#", 
+              markups = markups)
+  cat(jsonlite::toJSON(data, auto_unbox = TRUE, pretty = TRUE, digits=NA), 
+      file = outfile)
 }
