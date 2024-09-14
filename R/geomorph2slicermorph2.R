@@ -77,7 +77,7 @@ geomorph2slicermorph2 = function(gpa=NULL,
       GPALog = list(GPALog)
     )
     
-  cat(jsonlite::toJSON(data, auto_unbox=TRUE), file = paste(output.folder, "analysis.json", sep="/"))
+  cat(jsonlite::toJSON(data, auto_unbox=TRUE, pretty = TRUE, digits = NA), file = paste(output.folder, "analysis.json", sep="/"))
 
 
 }
