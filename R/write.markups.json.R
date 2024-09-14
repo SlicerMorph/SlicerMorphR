@@ -6,19 +6,32 @@ write.markups.json = function (pts = NULL, outfile = NULL)
   else labels = paste("F", 1:noLM, collapse = "-")
   points = list()
   
-  for (i in 1:noLM) points[[i]] = list(id = i, 
+  for (i in 1:noLM) { 
+    if (!all(is.na(as.numeric(pts[i,])))) {
+                                       points[[i]] = list(id = i, 
                                        label = labels[i], 
                                        position = as.numeric(pts[i, ]), 
                                        orientation = c(-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0), 
                                        selected = TRUE, 
                                        locked = FALSE, 
                                        visibility = TRUE, 
-                                       positionStatus = "defined")
+                                       positionStatus = "defined") 
+                                       } else {
+                                                points[[i]] = list(id = i, 
+                                                label = labels[i], 
+                                                position = as.numeric(pts[i, ]), 
+                                                orientation = c(-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0), 
+                                                selected = TRUE, 
+                                                locked = FALSE, 
+                                                visibility = TRUE, 
+                                                positionStatus = "missing") 
+                                       }
+  }
   
   display = list(visibility = TRUE,
                  opacity = 1.0,
                  color = c(0.4, 1.0, 1.0), 
-                 selectedColor = c(1.0, 0.5000076295109483, 0.5000076295109483), 
+                 selectedColor = c(1.0, 0.50000, 0.50000), 
                  activeColor = c(0.4, 1.0, 0.0),
                  propertiesLabelVisibility = FALSE,
                  pointLabelsVisibility = TRUE,
