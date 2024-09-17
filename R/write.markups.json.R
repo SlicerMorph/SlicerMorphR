@@ -9,7 +9,8 @@ write.markups.json = function (pts = NULL, outfile = NULL)
   for (i in 1:noLM) { 
     if (!all(is.na(as.numeric(pts[i,])))) {
                                        points[[i]] = list(id = i, 
-                                       label = labels[i], 
+                                       label = labels[i],
+                                       description = "", 
                                        position = as.numeric(pts[i, ]), 
                                        orientation = c(-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0), 
                                        selected = TRUE, 
@@ -18,7 +19,8 @@ write.markups.json = function (pts = NULL, outfile = NULL)
                                        positionStatus = "defined") 
                                        } else {
                                                 points[[i]] = list(id = i, 
-                                                label = labels[i], 
+                                                label = labels[i],
+                                                description = "",                   
                                                 position = as.numeric(pts[i, ]), 
                                                 orientation = c(-1.0, -0.0, -0.0, -0.0, -1.0, -0.0, 0.0, 0.0, 1.0), 
                                                 selected = TRUE, 
