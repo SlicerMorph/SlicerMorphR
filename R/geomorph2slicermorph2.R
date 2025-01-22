@@ -10,7 +10,7 @@ geomorph2slicermorph2 = function(gpa=NULL,
   
   no.LM = dim(gpa$consensus)[1]
   temp = cbind(paste("LM", 1:no.LM), gpa$consensus)
-  write.csv(file=paste0(output.folder, '/MeanShape.csv'), 
+  write.csv(file=paste0(output.folder, '/meanShape.csv'), 
             temp, row.names = FALSE, quote = FALSE)
   
   #write pcScores.csv file
@@ -22,7 +22,7 @@ geomorph2slicermorph2 = function(gpa=NULL,
   write.table(file=paste0(output.folder, '/pcScores.csv'), 
               temp, row.names = FALSE, sep=',', quote = FALSE)
   
-  #write the OutputData.csv file
+  #write the outputData.csv file
   #but we need the procrustes distance from mean
   
   pd <- function(M, A) sqrt(sum(rowSums((M-A)^2)))
@@ -35,7 +35,7 @@ geomorph2slicermorph2 = function(gpa=NULL,
   for (i in 1:no.LM) lm.labels=c(lm.labels, paste0("LM ", rep(i,3), c("_X", "_Y", "_Z")))
   
   header=c("Sample_name","proc_dist","centroid", lm.labels)
-  file=paste0(output.folder, '/OutputData.csv')
+  file=paste0(output.folder, '/outputData.csv')
   writeLines(con=file, paste(header, collapse=','))
   for (i in 1:nrow(temp)) cat(file=file, paste(f[i], paste(temp[i,], collapse=','), sep=","), sep="\n", append=TRUE)
   
@@ -64,7 +64,7 @@ geomorph2slicermorph2 = function(gpa=NULL,
       Boas = FALSE,
       MeanShape = "meanShape.csv",
       EigenValues = "eigenvalues.csv",
-      EigenVectors = "eigenvectors.csv",
+      EigenVectors = "eigenvector.csv",
       OutputData = "outputData.csv",
       PCScores = "pcScores.csv",
       SemiLandmarks = "[]",
