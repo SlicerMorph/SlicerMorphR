@@ -10,7 +10,7 @@ install via devtools
 
 * __read.markups.json__:  Reads the 3D Slicer Markups file saved in json format (the default format)
 * __write.markups.json__: Writes a set of 3D coordinates as a pointList markup type, which can be loaded and visualized in 3D Slicer. 
-* __parser2__: Reads and parses the analysis.json file output by SlicerMorph's GPA module (it will still read the analysis.log file)
+* __parser2__: Reads and parses the analysis.json file output by SlicerMorph's GPA module (it will still read the analysis.log file from Slicer version 5.6.2 and lower)
 * __geomorph2slicermorph__ : Allow to save a geomorph GPA and PCA analysis in SlicerMorph's GPA output LOG format, so that you can load the results into 3D Slicer to visualize (Use Slicer version 5.6.2 and lower).
 * __geomorph2slicermorph2__ : Allow to save a geomorph GPA and PCA analysis in SlicerMorph's GPA output JSON format, so that you can load the results into 3D Slicer to visualize. (Use Slicer versions 5.8 or higher)
 
