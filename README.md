@@ -1,5 +1,7 @@
+<img src="./SlicerMorphR.png" width="256"> 
+
 # SlicerMorphR
-R convenience functions for importing SlicerMorph dataset
+Convenience functions for importing SlicerMorph dataset into R.
 
 install via devtools
 
