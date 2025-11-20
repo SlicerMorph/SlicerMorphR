@@ -60,14 +60,14 @@ geomorph2slicermorph2 = function(gpa=NULL,
       LMFormat = ".mrk.json",
       NumberLM = no.LM,
       Excluded = FALSE,
-      ExcludedLM = "[]",
+      ExcludedLM = list(),
       Boas = FALSE,
       MeanShape = "meanShape.csv",
       EigenValues = "eigenvalues.csv",
       EigenVectors = "eigenvector.csv",
       OutputData = "outputData.csv",
       PCScores = "pcScores.csv",
-      SemiLandmarks = "[]",
+      SemiLandmarks = list(),
       CovariatesFile = ""
     )
     
